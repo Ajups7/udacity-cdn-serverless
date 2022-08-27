@@ -12,7 +12,9 @@ const logger = createLogger('todosDataAccess')
 
 export class TodoAccess {
   constructor(
-    private readonly docClient: DocumentClient = new AWS.DynamoDB.DocumentClient(),
+    private readonly docClient: DocumentClient = new (
+      XAWS.DynamoDB as any
+    ).DocumentClient(),
     private readonly todoTable: string = process.env.TABLE_NAME
   ) {}
 
